@@ -1,0 +1,87 @@
+" for compe
+"set completeopt=menuone,noselect
+" setting the python3 for neovim
+set scrolloff=8
+set number
+set relativenumber
+set tabstop=4 softtabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
+set noshowmode
+set encoding=UTF-8
+"set paste
+set nocompatible
+
+call plug#begin('~/.vim/plugged')
+"Plug 'junegunn/fzf', { 'do': { -> fzf#install() }}
+"Plug 'junegunn/fzf.vim'
+Plug 'preservim/nerdtree'
+Plug 'preservim/nerdcommenter'
+Plug 'jiangmiao/auto-pairs'
+Plug 'luochen1990/rainbow'
+Plug 'morhetz/gruvbox'
+Plug 'itchyny/lightline.vim'
+Plug 'neoclide/coc.nvim', {'branch':'release'}
+Plug 'ryanoasis/vim-devicons'
+Plug 'sheerun/vim-polyglot'
+Plug 'dense-analysis/ale'
+"Plug 'jbgutierrez/vim-better-comments'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'PhilRunninger/nerdtree-visual-selection'
+" LSP plugins 
+"Plug 'neovim/nvim-lspconfig'
+"Plug 'hrsh7th/nvim-compe'
+" snippets.vim
+"Plug 'norcalli/snippets.nvim'
+
+call plug#end()
+let g:gruvbox_contrast_dark = 'hard'
+set termguicolors
+colorscheme gruvbox 
+
+
+
+" enable syntax highlighting
+syntax enable
+" show the matching part of the pair for {} [] and ()
+"set showmatch
+
+" Our remaps 
+let mapleader = " "
+nnoremap <leader>q :Vex<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>t :TagbarToggle<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+" for lint ale_next_wrap
+nnoremap <C-k> <Plug>(ale_previous_wrap)
+nnoremap <C-j> <Plug>(ale_next_wrap)
+nnoremap <leader><CR> :so ~/.config/nvim/init.vim<CR>
+" remaps for fzf 
+"nnoremap <C-p> :Files<CR>
+
+let g:python3_host_prog = '/opt/homebrew/bin/python3.9'
+let g:NERDCreateDefaultMappings = 1
+let g:rainbow_active = 1 
+let g:webdevicons_enable = 1 
+let g:bettercomments_language_aliases = { 'javascript': 'js' }
+let g:webdevicons_enable_nerdtree = 1 
+" Add semi colon at end of line
+noremap <Leader>; g_a;<Esc>
+" Add comma  at end of line
+noremap <Leader>, g_a,<Esc>
+" Buffer Navigation
+"next buffer
+nnoremap <Tab> :bnext<CR>    
+"previous buffer
+nnoremap <S-Tab> :bprev<CR> 
+" close buffer
+nnoremap Q :bd!<CR>
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
